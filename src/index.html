@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Productos</title>
+    <script type="module" src="./js/main.js"></script>
+</head>
+
+<body>
+    <div class="container py-4 px-3 mx-auto">
+        <form action="javascript: void(0)" method="post">
+            <h1>Productos</h1>
+            <div class="mb-3">
+                <label for="producto" class="form-label">Producto</label>
+                <input type="text" class="form-control" id="producto">
+            </div>
+            <div class="mb-3">
+                <label for="cantidad" class="form-label">Cantidad</label>
+                <input type="number" class="form-control" id="cantidad">
+            </div>
+            <div class="mb-3">
+                <label for="precio_unitario" class="form-label">Precio Unitario</label>
+                <input type="number" class="form-control" id="precio_unitario">
+            </div>
+            <button type="submit" class="btn btn-success" id="btn_guardar_producto">Guardar</button>
+        </form>
+        <br>
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio unitario</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="productos"></tbody>
+        </table>
+    </div>
+    <script src="js/productos.js" type="module"></script>
+</body>
+
+</html>
