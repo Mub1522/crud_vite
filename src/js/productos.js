@@ -1,6 +1,11 @@
 import Swal from 'sweetalert2'
+import * as bootstrap from 'bootstrap'
 
 const url_empleados = "http://localhost/empleados_API/";
+
+const editar_modal = new bootstrap.Modal('#editar_modal', {
+    keyboard: true
+})
 
 let producto = document.getElementById('producto')
 let cantidad = document.getElementById('cantidad')
@@ -24,7 +29,7 @@ const app = new function () {
                             <td>${producto.cantidad}</td>
                             <td>${producto.precio_unitario}</td>
                             <td>
-                                <button class="btn btn-warning" id="btn_editar_producto">Editar</button>
+                                <button class="btn btn-warning btn_editar" id="btn_editar_producto">Editar</button>
                                 <button class="btn btn-danger btn_eliminar" data-id=`+ producto.id + ` data-producto=` + producto.producto + `>Eliminar</button>
                             </td>
                         </tr>
@@ -35,10 +40,17 @@ const app = new function () {
                 lista_productos.innerHTML = tabla_data;
 
                 let btns_eliminar = document.querySelectorAll('.btn_eliminar')
+                let btns_editar = document.querySelectorAll('.btn_editar')
 
                 btns_eliminar.forEach(function (btn) {
                     btn.addEventListener('click', function () {
                         app.borrar(this.dataset.id, this.dataset.producto)
+                    })
+                })
+
+                btns_editar.forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        app.editar()
                     })
                 })
             })
@@ -116,6 +128,10 @@ const app = new function () {
                     .catch(console.log)
             }
         });
+    }
+
+    this.editar = function () {
+        editar_modal.show()
     }
 }
 
